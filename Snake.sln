@@ -5,7 +5,7 @@ VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Snake", "Snake.csproj", "{5482DF9C-4F55-4C8E-89DB-006F1DEA2E64}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "..\SnakeWPF\Common\Common.csproj", "{420BDF8F-8379-42B8-A02F-E64B7C8BA136}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{420BDF8F-8379-42B8-A02F-E64B7C8BA136}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
