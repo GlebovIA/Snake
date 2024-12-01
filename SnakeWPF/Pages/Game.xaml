@@ -9,6 +9,11 @@
       Title="Game">
 
     <Grid>
-        
+        <Grid.Background>
+            <ImageBrush ImageSource="/SnakeWPF;component/Images/GameBackground.png" Stretch="UniformToFill"/>
+        </Grid.Background>
+        <Canvas x:Name="canvas">
+
+        </Canvas>
     </Grid>
 </Page>
