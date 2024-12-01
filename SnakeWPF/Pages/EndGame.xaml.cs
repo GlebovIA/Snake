@@ -1,17 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace SnakeWPF.Pages
 {
@@ -23,6 +11,17 @@ namespace SnakeWPF.Pages
         public EndGame()
         {
             InitializeComponent();
+            name.Content = MainWindow.mainWindow.viewModelUserSettings.Name;
+            top.Content = MainWindow.mainWindow.viewModelGames.Top;
+            glasses.Content = $"{MainWindow.mainWindow.viewModelGames.SnakesPlayers.Points.Count - 3} glasses";
+            MainWindow.mainWindow.receivingUpClient.Close();
+            MainWindow.mainWindow.tRec.Abort();
+            MainWindow.mainWindow.viewModelGames = null;
+        }
+
+        private void OpenHome(object sender, RoutedEventArgs e)
+        {
+            MainWindow.mainWindow.OpenPages(MainWindow.mainWindow.Home);
         }
     }
 }
