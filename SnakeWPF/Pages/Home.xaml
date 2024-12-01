@@ -23,7 +23,7 @@
                 <TextBox x:Name="ipTBx" HorizontalAlignment="Left" Height="25" Margin="42, 62, 0, 0" TextWrapping="Wrap" Text="192.168.0.107" VerticalAlignment="Top" Width="155" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="Forte"/>
                 <TextBox x:Name="portTBx" HorizontalAlignment="Left" Height="25" Margin="202, 62, 0, 0" TextWrapping="Wrap" Text="5000" VerticalAlignment="Top" Width="74" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="Forte"/>
                 <TextBox x:Name="nameTBx" HorizontalAlignment="Left" Height="25" Margin="42, 118, 0, 0" TextWrapping="Wrap" Text="Snake" VerticalAlignment="Top" Width="234" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="Forte"/>
-                <Button Click="Start_Click" Content="Game" HorizontalAlignment="Left" Margin="42, 148, 0, 0" VerticalAlignment="Top" Width="234" Height="25" FontFamily="Forte"/>
+                <Button Click="StartGame" Content="Game" HorizontalAlignment="Left" Margin="42, 148, 0, 0" VerticalAlignment="Top" Width="234" Height="25" FontFamily="Forte"/>
             </Grid>
         </Grid>
     </Grid>

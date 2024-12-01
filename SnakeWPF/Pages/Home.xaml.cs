@@ -1,17 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Newtonsoft.Json;
+using System.Net;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace SnakeWPF.Pages
 {
@@ -23,6 +13,31 @@ namespace SnakeWPF.Pages
         public Home()
         {
             InitializeComponent();
+        }
+
+        private void StartGame(object sender, RoutedEventArgs e)
+        {
+            if (MainWindow.mainWindow.receivingUpClient != null)
+                MainWindow.mainWindow.receivingUpClient.Close();
+            if (MainWindow.mainWindow.tRec != null)
+                MainWindow.mainWindow.tRec.Abort();
+            IPAddress UserIpAddress;
+            if (!IPAddress.TryParse(ipTBx.Text, out UserIpAddress))
+            {
+                MessageBox.Show("Please use the Ip address in the format X.X.X.X.");
+                return;
+            }
+            int UserPort;
+            if (!int.TryParse(portTBx.Text, out UserPort))
+            {
+                MessageBox.Show("Please use the Port as a number.");
+                return;
+            }
+            MainWindow.mainWindow.StartReceiver();
+            MainWindow.mainWindow.viewModelUserSettings.IPAddress = ipTBx.Text;
+            MainWindow.mainWindow.viewModelUserSettings.Port = portTBx.Text;
+            MainWindow.mainWindow.viewModelUserSettings.Name = nameTBx.Text;
+            MainWindow.Send("/start|" + JsonConvert.SerializeObject(MainWindow.mainWindow.viewModelUserSettings));
         }
     }
 }

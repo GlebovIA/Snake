@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media.Animation;
 
 namespace SnakeWPF
@@ -30,6 +31,8 @@ namespace SnakeWPF
         public MainWindow()
         {
             InitializeComponent();
+            mainWindow = this;
+            OpenPages(Home);
         }
 
         public void StartReceiver()
@@ -108,6 +111,25 @@ namespace SnakeWPF
             {
                 sender.Close();
             }
+        }
+        private void EventKeyUp(object sender, KeyEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(viewModelUserSettings.IPAddress) && !string.IsNullOrEmpty(viewModelUserSettings.Port) && (viewModelGames != null && !viewModelGames.SnakesPlayers.GameOwer))
+            {
+                if (e.Key == Key.Up)
+                    Send($"Up|{JsonConvert.SerializeObject(viewModelUserSettings)}");
+                else if (e.Key == Key.Down)
+                    Send($"Down|{JsonConvert.SerializeObject(viewModelUserSettings)}");
+                else if (e.Key == Key.Left)
+                    Send($"Left|{JsonConvert.SerializeObject(viewModelUserSettings)}");
+                else if (e.Key == Key.Right)
+                    Send($"Right|{JsonConvert.SerializeObject(viewModelUserSettings)}");
+            }
+        }
+        private void QuitApplication(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            receivingUpClient.Close();
+            tRec.Abort();
         }
     }
 }
